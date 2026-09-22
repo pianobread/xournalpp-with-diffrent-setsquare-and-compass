@@ -10,10 +10,10 @@ jobs:
       windows_builds: |
         [
           {
-            "runner": "windows-2025",
+            "runner": "windows-2022",
             "displayed_name": "Windows",
-            "msystem": "MINGW64",
-            "msys_package_env": "mingw-w64-x86_64",
+            "msystem": "mingw64",
+            "msys_package_env": "x86_64",
             "build_portable": "true"
           }
         ]
