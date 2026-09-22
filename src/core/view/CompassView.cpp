@@ -120,9 +120,7 @@ void CompassView::drawAngularMarks(cairo_t* cr) const {
         const double tick = (i % 5 == 0) ? TICK_LARGE : TICK_SMALL;
         cairo_move_to(cr, this->height * cs, this->height * si);
         if (i % angularCaptionOffset == 0) {
-            const double radTickEnd = (i == 270)
-                                          ? (this->circlePos + 1.5 * CIRCLE_RAD)
-                                          : (angularCaptionPos + 0.3);
+            const double radTickEnd = (i == 270) ? (this->circlePos + 1.5 * CIRCLE_RAD) : (angularCaptionPos + 0.3);
             cairo_line_to(cr, radTickEnd * cs, radTickEnd * si);
             cairo_move_to(cr, angularCaptionPos * cs, angularCaptionPos * si);
             showTextCenteredAndRotated(cr, std::to_string(360 - i), i + 90);
