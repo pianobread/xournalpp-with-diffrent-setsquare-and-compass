@@ -90,16 +90,10 @@ void SetsquareView::drawGeometryTool(cairo_t* cr) const {
     cairo_close_path(cr);
     cairo_clip(cr);
 
-    cairo_set_source_rgb(cr, 1., .0, .0);  // red
+    cairo_set_source_rgb(cr, 0., 0., 0.);
     drawOutline(cr);
-
-    cairo_set_source_rgb(cr, .0, .0, 1.);  // blue
     drawHorizontalMarks(cr);
-
-    cairo_set_source_rgb(cr, .0, .5, .0);  // green
     drawVerticalMarks(cr);
-
-    cairo_set_source_rgb(cr, .5, .0, .5);  // violet
     drawAngularMarks(cr);
 }
 
@@ -207,20 +201,6 @@ void SetsquareView::drawAngularMarks(cairo_t* cr) const {
 
 void SetsquareView::drawVerticalMarks(cairo_t* cr) const {
     xoj::util::CairoSaveGuard saveGuard(cr);
-    const auto max = this->maxVmark / 10;  // number of full centimeters
-
-    // BEGIN: VERTICAL marks within semicircle
-    clipVerticalStripes(cr);
-
-    // draw vertical marks
-    for (double i = .5; i <= max; i += .5) {
-        const double x = cathete(this->radius - .25, i);
-        cairo_move_to(cr, -x, i);
-        cairo_line_to(cr, x, i);
-        cairo_stroke(cr);
-    }
-    cairo_reset_clip(cr);
-    // END: VERTICAL marks within circle
 
 
     // BEGIN: vertical measuring marks with numbers
