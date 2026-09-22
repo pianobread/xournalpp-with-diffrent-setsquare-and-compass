@@ -214,7 +214,7 @@ void SetsquareView::drawVerticalMarks(cairo_t* cr) const {
         cairo_line_to(cr, x, i);
         cairo_stroke(cr);
     }
-    cairo_reset_clip();
+    cairo_reset_clip(cr);
     // END: VERTICAL marks within circle
 
     // BEGIN: vertical measuring marks with numbers
