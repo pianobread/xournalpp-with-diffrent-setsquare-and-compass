@@ -1,0 +1,19 @@
+name: Build My Windows Xournal++
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: ./.github/workflows/create-installers.yml
+    with:
+      windows_builds: |
+        [
+          {
+            "runner": "windows-2025",
+            "displayed_name": "Windows",
+            "msystem": "MINGW64",
+            "msys_package_env": "mingw-w64-x86_64",
+            "build_portable": "true"
+          }
+        ]
