@@ -67,13 +67,9 @@ void CompassView::drawGeometryTool(cairo_t* cr) const {
     cairo_select_font_face(cr, FONT_FAMILY, CAIRO_FONT_SLANT_NORMAL, CAIRO_FONT_WEIGHT_NORMAL);
     cairo_set_font_size(cr, FONT_SIZE);
 
-    cairo_set_source_rgb(cr, 1, 0, 0);  // red
+    cairo_set_source_rgb(cr, 0., 0., 0.);
     drawOutline(cr);
-
-    cairo_set_source_rgb(cr, .0, .0, 1.);  // blue
     drawHorizontalMarks(cr);
-
-    cairo_set_source_rgb(cr, .5, 0, .5);  // violet
     drawAngularMarks(cr);
 }
 
@@ -126,7 +122,9 @@ void CompassView::drawAngularMarks(cairo_t* cr) const {
         if (i % angularCaptionOffset == 0) {
             const double radTickEnd = (i == 270) ? (this->circlePos + 1.5 * CIRCLE_RAD) : (angularCaptionPos + 0.3);
             cairo_line_to(cr, radTickEnd * cs, radTickEnd * si);
-            cairo_move_to(cr, angularCaptionPos * cs, angularCaptionPos * si);
+            
+            const double numberPos = radTickEnd - 0.25;
+            cairo_move_to(cr, numberPos * cs, numberPos * si);
             showTextCenteredAndRotated(cr, std::to_string(360 - i), i + 90);
         } else {
             cairo_rel_line_to(cr, -tick * cs, -tick * si);
